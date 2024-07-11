@@ -12,6 +12,8 @@ Este repositório contém uma aplicação completa para gerenciamento de campanh
   - [Pré-requisitos](#pré-requisitos)
   - [Passos para Instalação](#passos-para-instalação)
   - [Executando com Docker](#executando-com-docker)
+- [Documentação da API](#documentação-da-api)
+- [Acesso ao Frontend](#acesso-ao-frontend)
 - [Estrutura do Projeto](#estrutura-do-projeto)
 
 ## Visão Geral
@@ -75,6 +77,22 @@ docker-compose up --build
 ```
 
 Este comando irá construir e iniciar todos os serviços definidos no arquivo `docker-compose.yml`.
+
+## Documentação da API
+
+A documentação da API está disponível no endpoint `/api-docs` após iniciar o servidor. Acesse a URL abaixo para visualizar a documentação interativa da API:
+
+```
+http://localhost:5000/swagger
+```
+
+## Acesso ao Frontend
+
+Após iniciar a aplicação com Docker Compose, o frontend estará disponível no seguinte endpoint:
+
+```
+http://localhost:3000
+```
 
 ## Estrutura do Projeto
 
