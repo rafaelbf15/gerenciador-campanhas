@@ -80,7 +80,7 @@ Este comando irá construir e iniciar todos os serviços definidos no arquivo `d
 
 ## Documentação da API
 
-A documentação da API está disponível no endpoint `/api-docs` após iniciar o servidor. Acesse a URL abaixo para visualizar a documentação interativa da API:
+A documentação da API está disponível no endpoint `/swagger` após iniciar o servidor. Acesse a URL abaixo para visualizar a documentação interativa da API:
 
 ```
 http://localhost:5000/swagger
