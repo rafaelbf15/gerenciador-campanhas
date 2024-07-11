@@ -13,8 +13,6 @@ Este repositório contém uma aplicação completa para gerenciamento de campanh
   - [Passos para Instalação](#passos-para-instalação)
   - [Executando com Docker](#executando-com-docker)
 - [Estrutura do Projeto](#estrutura-do-projeto)
-- [Contribuindo](#contribuindo)
-- [Licença](#licença)
 
 ## Visão Geral
 
