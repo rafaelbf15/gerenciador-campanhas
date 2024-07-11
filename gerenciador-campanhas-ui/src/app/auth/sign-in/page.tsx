@@ -17,7 +17,6 @@ import Yup from '@/utils/yup.config';
 import { useRouter } from 'next/navigation'
 import { useUsuarioContext } from '@/context/UsuarioContext';
 import toast from 'react-hot-toast';
-import { NEXT_PUBLIC_BASE_API_URL, NEXTAUTH_URL } from '@/utils/constants';
 
 function SignInPage() {
   const router = useRouter();

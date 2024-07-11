@@ -2,7 +2,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { NextAuthOptions } from "next-auth";
 import { IUser } from "@/types/next-auth";
 import { NEXTAUTH_SECRET } from "@/utils/constants";
-import axios from '@/lib/axios';
+import { axiosInternalApi } from "./axios";
 
 export const authOptions: NextAuthOptions = {
   pages: {
@@ -15,7 +15,7 @@ export const authOptions: NextAuthOptions = {
       credentials: { },
       async authorize(credentials) {
         try {
-          const res = await axios.post(`auth/login`, credentials);
+          const res = await axiosInternalApi.post(`auth/login`, credentials);
           const user: IUser = await res.data;
           if (res.status === 200 && user) {
             return user;
