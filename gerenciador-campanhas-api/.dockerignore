@@ -1,0 +1,14 @@
+# Ignore node_modules as they will be installed inside the container
+node_modules
+dist
+.git
+.gitignore
+Dockerfile
+.dockerignore
+README.md
+.idea
+.vscode
+coverage
+*.log
+tmp
+logs

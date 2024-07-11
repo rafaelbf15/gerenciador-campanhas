@@ -1,0 +1,58 @@
+networks:
+  default:
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    env_file: "./.env"
+    expose:
+      - "3306"
+    ports:
+      - $MYSQLDB_LOCAL_PORT:$MYSQLDB_DOCKER_PORT
+    environment:
+      MYSQL_ROOT_PASSWORD: $DB_PASSWORD
+      MYSQL_DATABASE: $DB_NAME
+    volumes:
+      - mysql-volume:/var/lib/mysql:rw
+    networks:
+      - default
+
+  gerenciador-api:
+    container_name: gerenciador-api
+    env_file: "./.env"
+    build:
+      context: ./gerenciador-campanhas-api/
+      dockerfile: Dockerfile
+    ports:
+      - $NESTJS_APP_LOCAL_PORT:$NESTJS_APP_DOCKER_PORT
+    depends_on:
+      - mysql
+    restart: always
+    environment:
+      - ENV=$ENV
+      - DB_HOST=$DB_HOST
+      - DB_PORT=$DB_PORT
+      - DB_USERNAME=$DB_USERNAME
+      - DB_PASSWORD=$DB_PASSWORD
+      - DB_NAME=$DB_NAME
+      - SECRET=$SECRET
+      - EXPIRESIN=$EXPIRESIN
+    command: sh -c "echo 'Waiting for MySQL to be ready...' && sleep 10 && npm run start:prod"
+    networks:
+      - default
+
+  gerenciador-ui:
+    container_name: gerenciador-ui
+    build:
+      context: ./gerenciador-campanhas-ui/
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - gerenciador-api
+    networks:
+      - default
+
+volumes:
+  mysql-volume:
